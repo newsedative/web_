@@ -1,1 +1,39 @@
+img {
+    height: 400px;
+}
 
+.main {
+    display: flex;
+}
+
+.sidebar {
+    width: 30%;
+    background-color: #8D909B;
+}
+
+.sidebar-title {
+    font-size: 25px;
+}
+
+.info {
+    background-color: #AAADC4;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    height: 600px;
+}
+
+.info-images {
+    background-color: #AAADC4;
+    padding: 20px;
+    overflow: scroll;
+    height: 600px;
+}
+
+footer {
+    font-size: 25px;
+    background-color: #D6EEFF;
+    padding: 30px;
+}
