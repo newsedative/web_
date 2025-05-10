@@ -56,6 +56,56 @@
             <script src="countries.js"></script>
             <script src="script1.js">           
             </script>
-            <script></script>
+            <script>
+                function getSchoolYearEnd() {
+                    // Установка даты конца учебного года (30 июня)
+                    const schoolYearEnd = new Date(new Date().getFullYear(), 5, 30); // Месяцы в JavaScript начинаются с 0 (0 - январь, 11 - декабрь)
+                    // Получение текущей даты
+                    const now = new Date();
+
+                    // Вычисление времени, оставшегося до конца учебного года
+                    const timeRemaining = schoolYearEnd - now;
+
+                    // Вычисление дней, часов, минут и секунд
+                    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                        // Возвращение времени в виде объекта
+                    return {
+                        days,
+                        hours,
+                        minutes,
+                        seconds
+                    };
+                }
+
+                function updateCountdown() {
+                    const time = getSchoolYearEnd();
+                    document.getElementById('countdownInfo').innerHTML = `До конца 2024-2025 учебного года`;
+                        
+                    const table = document.getElementById('countdownTable');
+                    table.innerHTML = `
+                            <tr>
+                            <td>${time.days}</td>
+                            <td>${time.hours}</td>
+                            <td>${time.minutes}</td>
+                            <td>${time.seconds}</td>
+                            </tr>
+                            <tr>
+                                <td>Дней</td>
+                                <td>Часов</td>
+                                <td>Минут</td>
+                                <td>Секунд</td>
+                            </tr>`;
+                }
+
+                // Обновление отображения времени каждую секунду
+                setInterval(updateCountdown, 1000);
+
+                // Обновление отображения времени сразу после загрузки страницы
+                updateCountdown();
+            </script>
     </body>
 </html>
