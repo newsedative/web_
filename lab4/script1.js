@@ -6,7 +6,7 @@ obj1 = {
 }
 
 function Changes() {
-    this.countries = [...countries];
+    this.countries = JSON.parse(JSON.stringify(countries));
     
     this.changeCountries = function(data) {
         this.countries.forEach(item => {
@@ -111,7 +111,7 @@ function makeTableFromCountry(country) {
     return tab;
 }
 
-countriesTable = countries.map(makeTableFromCountry);
+countriesTable = obj2.countries.map(makeTableFromCountry);
 
 outputElement = document.getElementById("countriesd");
 
